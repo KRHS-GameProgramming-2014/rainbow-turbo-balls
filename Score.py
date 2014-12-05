@@ -27,9 +27,11 @@ class Score():
 			
 	def update(self):
 		if self.change:
+			self.text = str(self.score)
 			self.textImage = self.font.render(self.text, 1, self.textColor)
-			self.textRect = self.textImage.get_rect(center = self.rect.center)
-			self.image = self.baseImage.blit(self.textImage, self.textRect)
+			self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
+			self.image = self.baseImage
+			self.image.blit(self.textImage, self.textRect)
 			self.change = False
 	
 	def setScore(self, score):

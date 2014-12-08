@@ -1,6 +1,115 @@
 import pygame, math
 
-class Ball():
+class Ball_BL():
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        if altImage:
+            self.normImage = pygame.image.load(image)
+            self.altImage = pygame.image.load(altImage)
+            self.image = self.normImage
+            self.change = True
+            self.timerMax = 1*60
+            self.timer = 0
+            self.changed = False
+        else:
+            self.image = pygame.image.load(image)
+            self.change = False
+        self.rect = self.image.get_rect()
+        self.speedx = speed[0]
+        self.speedy = speed[1]
+        self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.didBounceX = False
+        self.didBounceY = False
+
+class Ball_GN():
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        if altImage:
+            self.normImage = pygame.image.load(image)
+            self.altImage = pygame.image.load(altImage)
+            self.image = self.normImage
+            self.change = True
+            self.timerMax = 1*60
+            self.timer = 0
+            self.changed = False
+        else:
+            self.image = pygame.image.load(image)
+            self.change = False
+        self.rect = self.image.get_rect()
+        self.speedx = speed[0]
+        self.speedy = speed[1]
+        self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.didBounceX = False
+        self.didBounceY = False
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+
+class Ball_OG():
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        if altImage:
+            self.normImage = pygame.image.load(image)
+            self.altImage = pygame.image.load(altImage)
+            self.image = self.normImage
+            self.change = True
+            self.timerMax = 1*60
+            self.timer = 0
+            self.changed = False
+        else:
+            self.image = pygame.image.load(image)
+            self.change = False
+        self.rect = self.image.get_rect()
+        self.speedx = speed[0]
+        self.speedy = speed[1]
+        self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.didBounceX = False
+        self.didBounceY = False
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+
+class Ball_PL():
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        if altImage:
+            self.normImage = pygame.image.load(image)
+            self.altImage = pygame.image.load(altImage)
+            self.image = self.normImage
+            self.change = True
+            self.timerMax = 1*60
+            self.timer = 0
+            self.changed = False
+        else:
+            self.image = pygame.image.load(image)
+            self.change = False
+        self.rect = self.image.get_rect()
+        self.speedx = speed[0]
+        self.speedy = speed[1]
+        self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.didBounceX = False
+        self.didBounceY = False
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+
+class Ball_RD():
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        if altImage:
+            self.normImage = pygame.image.load(image)
+            self.altImage = pygame.image.load(altImage)
+            self.image = self.normImage
+            self.change = True
+            self.timerMax = 1*60
+            self.timer = 0
+            self.changed = False
+        else:
+            self.image = pygame.image.load(image)
+            self.change = False
+        self.rect = self.image.get_rect()
+        self.speedx = speed[0]
+        self.speedy = speed[1]
+        self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.didBounceX = False
+        self.didBounceY = False
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+
+class Ball_YW():
     def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
         if altImage:
             self.normImage = pygame.image.load(image)

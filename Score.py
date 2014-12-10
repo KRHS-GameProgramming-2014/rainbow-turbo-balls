@@ -6,6 +6,43 @@ class Score():
 		self.maxScore = 999
 		self.fontSize = 15
 		self.font = pygame.font.Font(None, self.fontSize)
+		if color == 'purple':
+			self.rect = self.baseImage.get_rect()
+			self.value = 1
+			self.textColor = [128,0,255]
+			if owner == 'black':
+				self.place([100, 25])
+				self.baseImage = pygame.image.load('RSC/Scores/PurpleW.png')
+			else:
+				self.place([width-100, Hight-25])
+				self.baseImage = pygame.image.load('RSC/Scores/PurpleB.png')
+		if color == 'red':
+			self.baseImage = pygame.image.load('RSC/Scores/Red.png')
+			self.rect = self.baseImage.get_rect()
+			self.value = 2
+			self.textColor = [255,0,0]
+			if owner == 'black':
+				self.place([175, 25])
+			else:
+				self.place([width-400, Hight-25])
+		if color == 'orange':
+			self.baseImage = pygame.image.load('RSC/Scores/Orange.png')
+			self.rect = self.baseImage.get_rect()
+			self.value = 3
+			self.textColor = [255,128,0]
+			if owner == 'black':
+				self.place([250, 25])
+			else:
+				self.place([width-250, Hight-25])
+		if color == 'yellow':
+			self.baseImage = pygame.image.load('RSC/Scores/Yellow.png')
+			self.rect = self.baseImage.get_rect()
+			self.value = 5
+			self.textColor = [255,255,0]
+			if owner == 'black':
+				self.place([325, 25])
+			else:
+				self.place([width-325, Hight-25])
 		if color == 'green':
 			self.baseImage = pygame.image.load('RSC/Scores/Green.png')
 			self.rect = self.baseImage.get_rect()
@@ -15,6 +52,15 @@ class Score():
 				self.place([400, 25])
 			else:
 				self.place([width-400, Hight-25])
+		if color == 'blue':
+			self.baseImage = pygame.image.load('RSC/Scores/Blue.png')
+			self.rect = self.baseImage.get_rect()
+			self.value = 7
+			self.textColor = [0,192,255]
+			if owner == 'black':
+				self.place([475, 25])
+			else:
+				self.place([width-475, Hight-25])
 		self.text = str(self.score)
 		self.textImage = self.font.render(self.text, 1, self.textColor)
 		self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])

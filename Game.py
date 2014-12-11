@@ -1,5 +1,5 @@
 import pygame, sys, random
-from AIballs import Ball_BL, Ball_GN, Ball_OG, Ball_PL, Ball_RD, Ball_YW
+from AIballs import Ball
 #from Player import Player
 from Score import Score
 
@@ -11,20 +11,21 @@ width = 1100
 height = 700
 size = width, height
 
-bgColor = r,g,b = 0, 0, 0 
-
-
 screen = pygame.display.set_mode(size)
 
-ball_BL = Ball("RSC/AI Balls/BL_AI_B.png", [3,9], [375, 150])
-ball_GN = Ball("RSC/AI Balls/GN_AI_B.png", [4,8], [450, 300])
-ball_OG = Ball("RSC/AI Balls/OG_AI_B.png", [5,7], [375, 450])
-ball_PL = Ball("RSC/AI Balls/PL_AI_B.png", [6,6], [225, 450])
-ball_RD = Ball("RSC/AI Balls/RD_AI_B.png", [7,5], [150, 300])
-ball_YW = Ball("RSC/AI Balls/YW_AI_B.png", [8,4], [225, 150])
+bgColor = r,g,b = 0, 0, 0 
+bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
+bgRect = bgImage.get_rect()
+
+ball_BL = Ball("RSC/AI Balls/BL_AI_B.png", [7,7], [375, 150])
+ball_GN = Ball("RSC/AI Balls/GN_AI_B.png", [6,6], [450, 300])
+ball_OG = Ball("RSC/AI Balls/OG_AI_B.png", [3,3], [375, 450])
+ball_PL = Ball("RSC/AI Balls/PL_AI_B.png", [1,1], [225, 450])
+ball_RD = Ball("RSC/AI Balls/RD_AI_B.png", [2,2], [150, 300])
+ball_YW = Ball("RSC/AI Balls/YW_AI_B.png", [5,5], [225, 150])
 
 
-gs = Score('green', 'black')
+#gs = Score('green', 'black')
 
 while True:
     for event in pygame.event.get():
@@ -61,21 +62,21 @@ while True:
     ball_PL.collideBall(ball_RD)
     ball_PL.collideBall(ball_YW)
     
-    ball5.collideBall(ball_BL)
-    ball5.collideBall(ball_GN)
-    ball5.collideBall(ball_OG)
-    ball5.collideBall(ball_PL)
-    ball5.collideBall(ball_YW)
+    ball_RD.collideBall(ball_BL)
+    ball_RD.collideBall(ball_GN)
+    ball_RD.collideBall(ball_OG)
+    ball_RD.collideBall(ball_PL)
+    ball_RD.collideBall(ball_YW)
     
-    ballYW.collideBall(ball_BL)
-    ballYW.collideBall(ball_GN)
-    ballYW.collideBall(ball_OG)
-    ballYW.collideBall(ball_PL)
-    ballYW.collideBall(ball_RD)
+    ball_YW.collideBall(ball_BL)
+    ball_YW.collideBall(ball_GN)
+    ball_YW.collideBall(ball_OG)
+    ball_YW.collideBall(ball_PL)
+    ball_YW.collideBall(ball_RD)
     
     bgColor = r,g,b
-    screen.fill(bgColor)
-    screen.blit(gs.image, gs.rect)
+    #screen.fill(bgColor)
+    screen.blit(bgImage, bgRect)
     screen.blit(ball_BL.image, ball_BL.rect)
     screen.blit(ball_GN.image, ball_GN.rect)
     screen.blit(ball_OG.image, ball_OG.rect)

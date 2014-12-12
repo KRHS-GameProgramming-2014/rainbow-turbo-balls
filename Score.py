@@ -66,7 +66,19 @@ class Score():
 			else:
 				self.place([width-475, Hight-25])
 				self.baseImage = pygame.image.load('RSC/Scores/BlueW.png')
-		self.text = str(self.score)
+        if color == 'black':
+			self.rect = self.baseImage.get_rect()
+			self.value = 7
+			self.textColor = [128,128,128]
+            self.place([550, 675])
+            self.baseImage = pygame.image.load('RSC/Scores/BlackW.png')
+        if color == 'white':
+			self.rect = self.baseImage.get_rect()
+			self.value = 7
+			self.textColor = [128,128,128]
+            self.place([550, 255])
+            self.baseImage = pygame.image.load('RSC/Scores/WhiteB.png')
+        self.text = str(self.score)
 		self.textImage = self.font.render(self.text, 1, self.textColor)
 		self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
 		self.image = self.baseImage

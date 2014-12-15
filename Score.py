@@ -1,115 +1,115 @@
 import pygame, sys, random
 class Score():
-	
-	def __init__(self, color, owner, width=1100, height=700):
-		self.score = 0
-		self.maxScore = 999
-		self.fontSize = 15
-		self.font = pygame.font.Font(None, self.fontSize)
-		if color == 'purple':
-			self.rect = self.baseImage.get_rect()
-			self.value = 1
-			self.textColor = [128,0,255]
-			if owner == 'black':
-				self.place([100, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/PurpleB.png')
-			else:
-				self.place([width-100, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/PurpleW.png')
-		if color == 'red':
-			self.rect = self.baseImage.get_rect()
-			self.value = 2
-			self.textColor = [255,0,0]
-			if owner == 'black':
-				self.place([175, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/RedB.png')
-			else:
-				self.place([width-400, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/RedW.png')
-		if color == 'orange':
-			self.rect = self.baseImage.get_rect()
-			self.value = 3
-			self.textColor = [255,128,0]
-			if owner == 'black':
-				self.place([250, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/OrangeB.png')
-			else:
-				self.place([width-250, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/OrangeW.png')
-		if color == 'yellow':
-			self.rect = self.baseImage.get_rect()
-			self.value = 5
-			self.textColor = [255,255,0]
-			if owner == 'black':
-				self.place([325, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/YellowB.png')
-			else:
-				self.place([width-325, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/YellowW.png')
-		if color == 'green':
-			self.rect = self.baseImage.get_rect()
-			self.value = 6
-			self.textColor = [0,255,0]
-			if owner == 'black':
-				self.place([400, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/GreenB.png')
-			else:
-				self.place([width-400, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/GreenW.png')
-		if color == 'blue':
-			self.rect = self.baseImage.get_rect()
-			self.value = 7
-			self.textColor = [0,192,255]
-			if owner == 'black':
-				self.place([475, 25])
-				self.baseImage = pygame.image.load('RSC/Scores/BlueB.png')
-			else:
-				self.place([width-475, Hight-25])
-				self.baseImage = pygame.image.load('RSC/Scores/BlueW.png')
+    
+    def __init__(self, color, owner, width=1100, height=700):
+        self.score = 0
+        self.maxScore = 999
+        self.fontSize = 15
+        self.font = pygame.font.Font(None, self.fontSize)
+        if color == 'purple':
+            self.rect = self.baseImage.get_rect()
+            self.value = 1
+            self.textColor = [128,0,255]
+            if owner == 'black':
+                self.place([100, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/PurpleB.png')
+            else:
+                self.place([width-100, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/PurpleW.png')
+        if color == 'red':
+            self.rect = self.baseImage.get_rect()
+            self.value = 2
+            self.textColor = [255,0,0]
+            if owner == 'black':
+                self.place([175, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/RedB.png')
+            else:
+                self.place([width-400, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/RedW.png')
+        if color == 'orange':
+            self.rect = self.baseImage.get_rect()
+            self.value = 3
+            self.textColor = [255,128,0]
+            if owner == 'black':
+                self.place([250, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/OrangeB.png')
+            else:
+                self.place([width-250, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/OrangeW.png')
+        if color == 'yellow':
+            self.rect = self.baseImage.get_rect()
+            self.value = 5
+            self.textColor = [255,255,0]
+            if owner == 'black':
+                self.place([325, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/YellowB.png')
+            else:
+                self.place([width-325, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/YellowW.png')
+        if color == 'green':
+            self.rect = self.baseImage.get_rect()
+            self.value = 6
+            self.textColor = [0,255,0]
+            if owner == 'black':
+                self.place([400, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/GreenB.png')
+            else:
+                self.place([width-400, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/GreenW.png')
+        if color == 'blue':
+            self.rect = self.baseImage.get_rect()
+            self.value = 7
+            self.textColor = [0,192,255]
+            if owner == 'black':
+                self.place([475, 25])
+                self.baseImage = pygame.image.load('RSC/Scores/BlueB.png')
+            else:
+                self.place([width-475, Hight-25])
+                self.baseImage = pygame.image.load('RSC/Scores/BlueW.png')
         if color == 'black':
-			self.rect = self.baseImage.get_rect()
-			self.value = 7
-			self.textColor = [128,128,128]
+            self.rect = self.baseImage.get_rect()
+            self.value = 4
+            self.textColor = [128,128,128]
             self.place([550, 675])
             self.baseImage = pygame.image.load('RSC/Scores/BlackW.png')
         if color == 'white':
-			self.rect = self.baseImage.get_rect()
-			self.value = 7
-			self.textColor = [128,128,128]
-            self.place([550, 255])
+            self.rect = self.baseImage.get_rect()
+            self.value = 4
+            self.textColor = [128,128,128]
+            self.place([550, 25])
             self.baseImage = pygame.image.load('RSC/Scores/WhiteB.png')
         self.text = str(self.score)
-		self.textImage = self.font.render(self.text, 1, self.textColor)
-		self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
-		self.image = self.baseImage
-		self.image.blit(self.textImage, self.textRect)
-		self.change = False
-		
-	def place(self, pos):
-		self.rect.center = pos
-			
-	def update(self):
-		if self.change:
-			self.text = str(self.score)
-			self.textImage = self.font.render(self.text, 1, self.textColor)
-			self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
-			self.image = self.baseImage
-			self.image.blit(self.textImage, self.textRect)
-			self.change = False
-	
-	def setScore(self, score):
-		self.score = score
-		self.change = True
-		
-	def increaseScore(self):
-		self.score += self.value
-		if self.score > self.maxScore:
-			self.score = self.maxScore
-		self.change = True
-		
-	def resetScore(self):
-		self.score = 0
-		self.change = True
+        self.textImage = self.font.render(self.text, 1, self.textColor)
+        self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
+        self.image = self.baseImage
+        self.image.blit(self.textImage, self.textRect)
+        self.change = False
+        
+    def place(self, pos):
+        self.rect.center = pos
+            
+    def update(self):
+        if self.change:
+            self.text = str(self.score)
+            self.textImage = self.font.render(self.text, 1, self.textColor)
+            self.textRect = self.textImage.get_rect(center = [self.rect.width/2, self.rect.height/2])
+            self.image = self.baseImage
+            self.image.blit(self.textImage, self.textRect)
+            self.change = False
+    
+    def setScore(self, score):
+        self.score = score
+        self.change = True
+        
+    def increaseScore(self):
+        self.score += self.value
+        if self.score > self.maxScore:
+            self.score = self.maxScore
+        self.change = True
+        
+    def resetScore(self):
+        self.score = 0
+        self.change = True
 
 ##timer = Score([75, 25], [64,64,64] "Score: ", 20)
 ##timerWait = 0

@@ -1,7 +1,6 @@
 import pygame, sys, random
-from Gameballs import Ball
+from GameBalls import Ball
 from GameBalls import PBall
-#from Player import Player
 from Score import Score
 
 pygame.init()

@@ -1,5 +1,6 @@
 import pygame, sys, random
-from AIballs import Ball
+from Gameballs import Ball
+from GameBalls import PBall
 #from Player import Player
 from Score import Score
 
@@ -23,7 +24,8 @@ ball_OG = Ball("RSC/AI Balls/OG_AI_B.png", [3,3], [375, 450])
 ball_PL = Ball("RSC/AI Balls/PL_AI_B.png", [1,1], [225, 450])
 ball_RD = Ball("RSC/AI Balls/RD_AI_B.png", [2,2], [150, 300])
 ball_YW = Ball("RSC/AI Balls/YW_AI_B.png", [5,5], [225, 150])
-
+PB_Black = Ball("RSC/Player Ball/BK_P_B.png", [4,4], [300,400])
+PB_White = Ball("RSC/Player Ball/WT_P_B.png", [4,4], [375, 400])
 
 #gs = Score('green', 'black')
 

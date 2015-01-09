@@ -1,18 +1,31 @@
 import pygame, math
 
 class Ball():
-    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
-        if altImage:
-            self.normImage = pygame.image.load(image)
-            self.altImage = pygame.image.load(altImage)
-            self.image = self.normImage
-            self.change = True
-            self.timerMax = 1*60
-            self.timer = 0
-            self.changed = False
-        else:
-            self.image = pygame.image.load(image)
-            self.change = False
+    def __init__(self, color, speed = [0,0], pos = [0,0]):
+        if color == "purple":
+            self.image = pygame.image.load("RSC/AI Balls/PL_AI_B.png")
+            self.color = purple
+            self.value = 1
+        elif color == "red":
+            self.image = pygame.image.load("RSC/AI Balls/RD_AI_B.png")
+            self.color = purple
+            self.value = 2
+        elif color == "orange":
+            self.image = pygame.image.load("RSC/AI Balls/OG_AI_B.png")
+            self.color = purple
+            self.value = 3
+        elif color == "yellow":
+            self.image = pygame.image.load("RSC/AI Balls/YW_AI_B.png")
+            self.color = purple
+            self.value = 5
+        elif color == "green":
+            self.image = pygame.image.load("RSC/AI Balls/GN_AI_B.png")
+            self.color = purple
+            self.value = 6
+        elif color == "blue":
+            self.image = pygame.image.load("RSC/AI Balls/BL_AI_B.png")
+            self.color = purple
+            self.value = 7
         self.rect = self.image.get_rect()
         self.speedx = speed[0]
         self.speedy = speed[1]
@@ -20,10 +33,12 @@ class Ball():
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
-        
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+
+
     def place(self, pos):
         self.rect.center = pos
-        
+
     def update(self, width, height):
         if self.change:
             if self.changed:
@@ -38,8 +53,8 @@ class Ball():
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]
         self.move()
-        self.collideWall(width, height) 
-        
+        self.collideWall(width, height)
+
     def move(self):
         self.rect = self.rect.move(self.speed)
 
@@ -57,21 +72,20 @@ class Ball():
                 #print "hit xWall"
 
     def collideBall(self, other):
-        if self != other:
         #print "trying to hit Ball"
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    #if (self.radius + other.radius) > self.distance(other.rect.center):
-                        if not self.didBounceX:
-                            self.speedx = -self.speedx
-                            self.didBouncex = True
-                        if not self.didBounceY:
-                            self.speedy = -self.speedy
-                            self.didBounceY = True
-                            #print "hit Ball"
-                        if self.change:
-                            self.image = self.altImage
-                            self.changed = True
+        if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+            if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                if (self.radius + other.radius) > self.distance(other.rect.center):
+                    if not self.didBounceX:
+                        self.speedx = -self.speedx
+                        self.didBouncex = True
+                    if not self.didBounceY:
+                        self.speedy = -self.speedy
+                        self.didBounceY = True
+                        #print "hit Ball"
+                    if self.change:
+                        self.image = self.altImage
+                        self.changed = True
 
     def distance(self, pt):
         x1 = self.rect.center[0]

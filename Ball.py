@@ -1,18 +1,31 @@
 import pygame, math
 
 class Ball():
-    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
-        if altImage:
-            self.normImage = pygame.image.load(image)
-            self.altImage = pygame.image.load(altImage)
-            self.image = self.normImage
-            self.change = True
-            self.timerMax = 1*60
-            self.timer = 0
-            self.changed = False
-        else:
-            self.image = pygame.image.load(image)
-            self.change = False
+    def __init__(self, color, speed = [0,0], pos = [0,0]):
+        if color == "purple":
+            self.image = pygame.image.load("RSC/AI Balls/PL_AI_B.png")
+            self.color = purple
+            self.value = 1
+        elif color == "red":
+            self.image = pygame.image.load("RSC/AI Balls/RD_AI_B.png")
+            self.color = purple
+            self.value = 2
+        elif color == "orange":
+            self.image = pygame.image.load("RSC/AI Balls/OG_AI_B.png")
+            self.color = purple
+            self.value = 3
+        elif color == "yellow":
+            self.image = pygame.image.load("RSC/AI Balls/YW_AI_B.png")
+            self.color = purple
+            self.value = 5
+        elif color == "green":
+            self.image = pygame.image.load("RSC/AI Balls/GN_AI_B.png")
+            self.color = purple
+            self.value = 6
+        elif color == "blue":
+            self.image = pygame.image.load("RSC/AI Balls/BL_AI_B.png")
+            self.color = purple
+            self.value = 7
         self.rect = self.image.get_rect()
         self.speedx = speed[0]
         self.speedy = speed[1]

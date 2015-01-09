@@ -14,20 +14,33 @@ size = width, height
 screen = pygame.display.set_mode(size)
 
 balls = []
-balls += [Ball("RSC/Player Balls/BK_P_B.png", [4,5], [100, 125])]
+while True:
+    spawn_number = random.randint(0,64)
+    if spawn_number < 32:
+        balls += [Ball("purple", [1,1], [random.randint >1100, random.randint >700])]
+    elif spawn_number < 48:
+        balls += [Ball("red", [2,2], [random.randint >1100, random.randint >700])]
+    elif spawn_number > 56: 
+        balls += [Ball("orange", [3,3], [random.randint >1100, random.randint >700])]
+    elif spawn_number > 60: 
+        balls += [Ball("yellow", [5,5], [random.randint >1100, random.randint >700])]
+    elif spawn_number > 62: 
+        balls += [Ball("green", [6,6], [random.randint >1100, random.randint >700])]
+    else:  
+        balls += [Ball("blue", [7,7], [random.randint >1100, random.randint >700])]
 
 bgColor = r,g,b = 0, 0, 0 
 bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
 bgRect = bgImage.get_rect()
 
-balls = [Ball("RSC/AI Balls/BL_AI_B.png", [7,7], [375, 150]),
-         Ball("RSC/AI Balls/GN_AI_B.png", [6,6], [450, 300]),
-         Ball("RSC/AI Balls/OG_AI_B.png", [3,3], [375, 450]),
-         Ball("RSC/AI Balls/PL_AI_B.png", [1,1], [225, 450]),
-         Ball("RSC/AI Balls/RD_AI_B.png", [2,2], [150, 300]),
-         Ball("RSC/AI Balls/YW_AI_B.png", [5,5], [225, 150])]
-player = Ball("RSC/Player Balls/BK_P_B.png", [4,4], [300,400])
-PB_White = Ball("RSC/Player Balls/WT_P_B.png", [4,4], [375, 400])
+#balls = [Ball("RSC/AI Balls/BL_AI_B.png", [7,7], [375, 150]),
+         #Ball("RSC/AI Balls/GN_AI_B.png", [6,6], [450, 300]),
+         #Ball("RSC/AI Balls/OG_AI_B.png", [3,3], [375, 450]),
+         #Ball("RSC/AI Balls/PL_AI_B.png", [1,1], [225, 450]),
+         #Ball("RSC/AI Balls/RD_AI_B.png", [2,2], [150, 300]),
+         #Ball("RSC/AI Balls/YW_AI_B.png", [5,5], [225, 150])]
+#player = Ball("RSC/Player Balls/BK_P_B.png", [4,4], [300,400])
+#PB_White = Ball("RSC/Player Balls/WT_P_B.png", [4,4], [375, 400])
 
 #gs = Score('green', 'black')
 

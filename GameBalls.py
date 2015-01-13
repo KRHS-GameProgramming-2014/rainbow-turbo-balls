@@ -96,30 +96,30 @@ class Ball():
 
 
 class PBall():
-    def __init__(self, pos):
-        Ball.__init__(self, "images/Player/pballbu.png", [0,0], pos)
-        self.upImages = [pygame.image.load("images/Player/pballru.png"),
-                         pygame.image.load("images/Player/pballgu.png"),
+    def __init__(self, image, speed = [0,0], pos = [0,0], altImage = None):
+        #Ball.__init__(self, "images/Player/pballbu.png", [0,0], pos)
+        #self.upImages = [pygame.image.load("images/Player/pballru.png"),
+                         pygame.image.load[("images/Player/pballgu.png"),
                          pygame.image.load("images/Player/pballbu.png")]
-        self.downImages = [pygame.image.load("images/Player/pballrd.png"),
-                           pygame.image.load("images/Player/pballgd.png"),
-                           pygame.image.load("images/Player/pballbd.png")]
-        self.leftImages = [pygame.image.load("images/Player/pballrl.png"),
-                           pygame.image.load("images/Player/pballgl.png"),
-                           pygame.image.load("images/Player/pballbl.png")]
-        self.rightImages = [pygame.image.load("images/Player/pballrr.png"),
-                            pygame.image.load("images/Player/pballgr.png"),
-                            pygame.image.load("images/Player/pballbr.png")]
-        self.facing = "up"
-        self.changed = False
-        self.images = self.upImages
-        self.frame = 0
-        self.maxFrame = len(self.images) - 1
-        self.waitCount = 0
-        self.maxWait = 60*.25
-        self.image = self.images[self.frame]
-        self.rect = self.image.get_rect(center = self.rect.center)
-        self.maxSpeed = 10
+        #self.downImages = [pygame.image.load("images/Player/pballrd.png"),
+                         pygame.image.load[("images/Player/pballgd.png"),
+                         pygame.image.load("images/Player/pballbd.png")]
+        #self.leftImages = [pygame.image.load("images/Player/pballrl.png"),
+                         pygame.image.load[("images/Player/pballgl.png"),
+                         pygame.image.load("images/Player/pballbl.png")]
+        #self.rightImages = [pygame.image.load("images/Player/pballrr.png"),
+                         pygame.image.load[("images/Player/pballgr.png"),
+                         pygame.image.load("images/Player/pballbr.png")]
+        #self.facing = "up"
+        #self.changed = False
+        #self.images = self.upImages
+        #self.frame = 0
+        #self.maxFrame = len(self.images) - 1
+        #self.waitCount = 0
+        #self.maxWait = 60*.25
+        #self.image = self.images[self.frame]
+        #self.rect = self.image.get_rect(center = self.rect.center)
+        #self.maxSpeed = 10
             
     def update(self, width, height):
         Ball.update(self, width, height)

@@ -40,15 +40,6 @@ class Ball():
         self.rect.center = pos
 
     def update(self, width, height):
-        if self.change:
-            if self.changed:
-                if self.timer < self.timerMax:
-                    self.timer += 1
-                else:
-                    self.timer = 0
-                    self.image = self.normImage
-                    self.changed = False
-
         self.didBounceX = False
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]

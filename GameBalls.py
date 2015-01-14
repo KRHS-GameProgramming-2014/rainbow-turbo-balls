@@ -4,27 +4,27 @@ class Ball():
     def __init__(self, color, speed = [0,0], pos = [0,0]):
         if color == "purple":
             self.image = pygame.image.load("RSC/AI Balls/PL_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 1
         elif color == "red":
             self.image = pygame.image.load("RSC/AI Balls/RD_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 2
         elif color == "orange":
             self.image = pygame.image.load("RSC/AI Balls/OG_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 3
         elif color == "yellow":
             self.image = pygame.image.load("RSC/AI Balls/YW_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 5
         elif color == "green":
             self.image = pygame.image.load("RSC/AI Balls/GN_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 6
         elif color == "blue":
             self.image = pygame.image.load("RSC/AI Balls/BL_AI_B.png")
-            self.color = purple
+            self.color = color
             self.value = 7
         self.rect = self.image.get_rect()
         self.speedx = speed[0]
@@ -40,15 +40,6 @@ class Ball():
         self.rect.center = pos
 
     def update(self, width, height):
-        if self.change:
-            if self.changed:
-                if self.timer < self.timerMax:
-                    self.timer += 1
-                else:
-                    self.timer = 0
-                    self.image = self.normImage
-                    self.changed = False
-
         self.didBounceX = False
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]
@@ -83,9 +74,7 @@ class Ball():
                         self.speedy = -self.speedy
                         self.didBounceY = True
                         #print "hit Ball"
-                    if self.change:
-                        self.image = self.altImage
-                        self.changed = True
+                   
 
     def distance(self, pt):
         x1 = self.rect.center[0]

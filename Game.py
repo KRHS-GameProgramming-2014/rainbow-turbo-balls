@@ -53,19 +53,20 @@ while True:
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
     
-    spawn_number = random.randint(0,64)
-    if spawn_number < 32:
-        balls += [Ball("purple", [1,1], [random.randint (0,1100), random.randint (0,700)]
-    elif spawn_number < 48:
-        balls += [Ball("red", [2,2], [random.randint (0,1100), random.randint (0,700)]
-    elif spawn_number > 56: 
-        balls += [Ball("orange", [3,3], [random.randint (0,1100), random.randint (0,700)]
-    elif spawn_number > 60: 
-        balls += [Ball("yellow", [5,5], [random.randint (0,1100), random.randint (0,700)]
-    elif spawn_number > 62: 
-        balls += [Ball("green", [6,6], [random.randint (0,1100), random.randint (0,700)]
-    else:  
-        balls += [Ball("blue", [7,7], [random.randint (0,1100), random.randint (0,700)]
+    if len(balls) < 20:
+        spawn_number = random.randint(0,64)
+        if spawn_number < 32:
+            balls += [Ball("purple", [1,1], [random.randint (0,1100), random.randint (0,700)])]
+        elif spawn_number < 48:
+            balls += [Ball("red", [2,2], [random.randint (0,1100), random.randint (0,700)])]
+        elif spawn_number < 56: 
+            balls += [Ball("orange", [3,3], [random.randint (0,1100), random.randint (0,700)])]
+        elif spawn_number < 60: 
+            balls += [Ball("yellow", [5,5], [random.randint (0,1100), random.randint (0,700)])]
+        elif spawn_number < 62: 
+            balls += [Ball("green", [6,6], [random.randint (0,1100), random.randint (0,700)])]
+        else:  
+            balls += [Ball("blue", [7,7], [random.randint (0,1100), random.randint (0,700)])]
 
     for ball in balls:
         ball.update(width, height)

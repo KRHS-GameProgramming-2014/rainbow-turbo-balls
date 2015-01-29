@@ -74,7 +74,9 @@ class Ball():
                         self.speedy = -self.speedy
                         self.didBounceY = True
                         #print "hit Ball"
-                   
+                    if self.change:
+                        self.image = self.altImage
+                        self.changed = True
 
     def distance(self, pt):
         x1 = self.rect.center[0]

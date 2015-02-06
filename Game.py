@@ -20,9 +20,9 @@ bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
 bgRect = bgImage.get_rect()
 
 
-player = PBall
-PB_Black = ([4,4], [300,400])
-#PB_White = Ball(, [4,4], [375, 400])
+
+PB_Black = PBall("Black", [300,400])
+PB_White = PBall("white", [375, 400])
 
 #gs = Score('green', 'black')
 
@@ -31,13 +31,13 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
-                player.go("up")
+                PB_Black.go("up")
             if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                player.go("right")
+                PB_Black.go("right")
             if event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                player.go("down")
+                PB_Black.go("down")
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                player.go("left")
+                PB_Black.go("left")
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.go("stop up")
@@ -82,8 +82,8 @@ while True:
     screen.blit(bgImage, bgRect)
     for ball in balls:
         screen.blit(ball.image, ball.rect)
-    #screen.blit(PB_Black.image, PB_Black.rect)
-    #screen.blit(PB_White.image, PB_White.rect)
+    screen.blit(PB_Black.image, PB_Black.rect)
+    screen.blit(PB_White.image, PB_White.rect)
     
     pygame.display.flip()
     clock.tick(60)

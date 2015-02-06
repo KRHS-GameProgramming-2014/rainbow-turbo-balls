@@ -89,6 +89,7 @@ class Ball():
 
 class PBall():
     def __init__(self, color, pos = [0,0]):
+        self.color = color
         if self.color == "white":
             self.image = pygame.image.load("RSC/Player Balls/WT_P_B.png")
         else:
@@ -117,7 +118,19 @@ class PBall():
                 self.didBounceY = True
                 #print "hit xWall"
     
-    
+    def place(self, pos):
+        self.rect.center = pos
+
+    def update(self, width, height):
+        self.didBounceX = False
+        self.didBounceY = False
+        self.speed = [self.speedx, self.speedy]
+        self.move()
+        self.collideWall(width, height)
+
+    def move(self):
+        self.rect = self.rect.move(self.speed)
+        
     def go(self, direction):
         if direction == "up":
             self.facing = "up"

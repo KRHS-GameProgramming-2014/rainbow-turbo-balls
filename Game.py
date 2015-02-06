@@ -22,14 +22,10 @@ bgRect = bgImage.get_rect()
 
 run = False
 
-#balls = [Ball("RSC/AI Balls/BL_AI_B.png", [7,7], [375, 150]),
-         #Ball("RSC/AI Balls/GN_AI_B.png", [6,6], [450, 300]),
-         #Ball("RSC/AI Balls/OG_AI_B.png", [3,3], [375, 450]),
-         #Ball("RSC/AI Balls/PL_AI_B.png", [1,1], [225, 450]),
-         #Ball("RSC/AI Balls/RD_AI_B.png", [2,2], [150, 300]),
-         #Ball("RSC/AI Balls/YW_AI_B.png", [5,5], [225, 150])]
-#PB_Black = Ball("RSC/Player Balls/BK_P_B.png", [4,4], [300,400])
-#PB_White = Ball("RSC/Player Balls/WT_P_B.png", [4,4], [375, 400])
+
+PB_Black = PBall("Black", [300,400])
+PB_White = PBall("white", [375, 400])
+
 
 #gs = Score('green', 'black')
 
@@ -37,7 +33,8 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "RSC/Game/NEW_GAME_BUTTON.png")
-
+bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND.png").convert()
+bgRect = bgImage.get_rect()
 while True:
     while not run:
         for event in pygame.event.get():
@@ -58,22 +55,20 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-        bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND.png").convert()
-        bgRect = bgImage.get_rect()
+    bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
+    bgRect = bgImage.get_rect()   
     while run:
-        bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
-        bgRect = bgImage.get_rect()
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
-                    player.go("up")
+                    PB_Black.go("up")
                 if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                    player.go("right")
+                    PB_Black.go("right")
                 if event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                    player.go("down")
+                    PB_Black.go("down")
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                    player.go("left")
+                    PB_Black.go("left")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
@@ -102,9 +97,9 @@ while True:
         for ball in balls:
             ball.update(width, height)
         
-        #for bully in balls:
-            #for victem in balls:
-                #bully.collideBall(victem)
+        for bully in balls:
+            for victem in balls:
+                bully.collideBall(victem)
 
 
         
@@ -118,12 +113,12 @@ while True:
         screen.blit(bgImage, bgRect)
         for ball in balls:
             screen.blit(ball.image, ball.rect)
-        #screen.blit(PB_Black.image, PB_Black.rect)
-        #screen.blit(PB_White.image, PB_White.rect)
+        screen.blit(PB_Black.image, PB_Black.rect)
+        screen.blit(PB_White.image, PB_White.rect)
         
         pygame.display.flip()
         clock.tick(60)
-        
-        
-        
-        
+            
+            
+            
+            

@@ -30,6 +30,7 @@ class Ball():
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
+        #self.maxSpeed = 4
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
@@ -97,6 +98,9 @@ class PBall():
        
         self.rect = self.image.get_rect()
         self.place(pos)
+        self.speedx = 0
+        self.speedy = 0
+        self.maxSpeed = 4
             
     def update(self, width, height):
         self.didBounceX = False

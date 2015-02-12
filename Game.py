@@ -61,23 +61,41 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w or event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     PB_Black.go("up")
-                if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_d:
                     PB_Black.go("right")
-                if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                if event.key == pygame.K_s:
                     PB_Black.go("down")
-                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                if event.key == pygame.K_a:
                     PB_Black.go("left")
+                if event.key == pygame.K_UP:
+                    PB_White.go("up")
+                if event.key == pygame.K_RIGHT:
+                    PB_White.go("right")
+                if event.key == pygame.K_DOWN:
+                    PB_White.go("down")
+                if event.key == pygame.K_LEFT:    
+                    PB_White.go("left")
+                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
-                    player.go("stop up")
+                    PB_Black.go("stop up")
                 if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                    player.go("stop right")
+                    PB_Black.go("stop right")
                 if event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                    player.go("stop down")
+                    PB_Black.go("stop down")
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                    player.go("stop left")
+                    PB_Black.go("stop left")
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_UP:
+                    PB_White.go("stop up")
+                if event.key == pygame.K_RIGHT:
+                    PB_White.go("stop right")
+                if event.key == pygame.K_DOWN:
+                    PB_White.go("stop down")
+                if event.key == pygame.K_LEFT:
+                    PB_White.go("stop left")                   
         
         if len(balls) < 20:
             spawn_number = random.randint(0,64)
@@ -94,6 +112,9 @@ while True:
             else:  
                 balls += [Ball("blue", [7,7], [random.randint (0,1100), random.randint (0,700)])]
 
+        PB_Black.update(width, height)
+        PB_White.update(width, height)
+        
         for ball in balls:
             ball.update(width, height)
         

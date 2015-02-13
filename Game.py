@@ -119,8 +119,14 @@ while True:
             ball.update(width, height)
         
         for bully in balls:
+            PB_Black.collideBall(bully)
+            bully.collideBall
+            PB_White.collideBall(bully)
+            bully.collideBall
             for victem in balls:
                 bully.collideBall(victem)
+               
+        
 
 
         

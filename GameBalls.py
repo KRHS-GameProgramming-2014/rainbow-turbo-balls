@@ -162,9 +162,30 @@ class PBall():
         elif direction == "stop left":
             self.speedx = 0
 
+    def collideBall(self, other):
+        if self != other:
+            #print "trying to hit Ball"
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        if not self.didBounceX:
+                            self.speedx = -self.speedx
+                            self.didBouncex = True
+                        if not self.didBounceY:
+                            self.speedy = -self.speedy
+                            self.didBounceY = True
+                            #print "hit Ball"
+                        #if self.change:
+                            #self.image = self.altImage
+                            #self.changed = True
+    
     def distance(self, pt):
         x1 = self.rect.center[0]
         y1 = self.rect.center[1]
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+#class PlayerAI():
+    #if player collideBall PB_Black:
+        

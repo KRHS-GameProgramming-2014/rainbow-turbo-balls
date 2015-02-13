@@ -120,9 +120,9 @@ while True:
         
         for bully in balls:
             PB_Black.collideBall(bully)
-            bully.collideBall
+            bully.collidePBall(PB_Black)
             PB_White.collideBall(bully)
-            bully.collideBall
+            bully.collidePBall(PB_White)
             for victem in balls:
                 bully.collideBall(victem)
                

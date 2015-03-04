@@ -15,6 +15,7 @@ size = width, height
 screen = pygame.display.set_mode(size)
 
 balls = []
+aiBalls = []
     
 bgColor = r,g,b = 0, 0, 0 
 bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
@@ -33,7 +34,7 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "RSC/Game/NEW_GAME_BUTTON.png")
-bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND.png").convert()
+bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND2.png").convert()
 bgRect = bgImage.get_rect()
 while True:
     while not run:
@@ -58,6 +59,7 @@ while True:
     bgImage = pygame.image.load("RSC/Game/SCREEN.png").convert()
     bgRect = bgImage.get_rect()   
     while run:
+        #-----Events-----
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -97,6 +99,7 @@ while True:
                 if event.key == pygame.K_LEFT:
                     PB_White.go("stop left")                   
         
+        #-----Spawn-----
         if len(balls) < 20:
             spawn_number = random.randint(0,64)
             if spawn_number < 32:
@@ -112,33 +115,45 @@ while True:
             else:  
                 balls += [Ball("blue", [7,7], [random.randint (0,1100), random.randint (0,700)])]
 
+        #-----Update----
         PB_Black.update(width, height)
         PB_White.update(width, height)
         
         for ball in balls:
             ball.update(width, height)
         
+        #-----Collide----
         for bully in balls:
             PB_Black.collideBall(bully)
-            bully.collidePBall(PB_Black)
+            aiBalls += bully.collidePBall(PB_Black)
             PB_White.collideBall(bully)
-            bully.collidePBall(PB_White)
+            aiBalls += bully.collidePBall(PB_White)
             for victem in balls:
                 bully.collideBall(victem)
                
-        
+        for bully in aiBalls:
+            for victem in balls:
+                aiBalls += victem.collideAIBall(bully)
+                bully.collideBall(victem)
+            for victem in aiBalls:
+                bully.collideAIBall(victem)
+                victem.collideBall(Bully)
 
 
         
-        #for ball in balls:
-            #if not ball.living:
-                #balls.remove(ball)
-        
+        for ball in balls:
+            if not ball.living:
+                balls.remove(ball)
+        for ball in aiBalls:
+            if not ball.living:
+                balls.remove(ball)
         
         bgColor = r,g,b
         #screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
         for ball in balls:
+            screen.blit(ball.image, ball.rect)
+        for ball in aiBalls:
             screen.blit(ball.image, ball.rect)
         screen.blit(PB_Black.image, PB_Black.rect)
         screen.blit(PB_White.image, PB_White.rect)

@@ -91,7 +91,7 @@ class Ball():
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         self.living = False
-                        return PlayerAI(other.color, self.rect.center) 
+                        return [PlayerAI(other.color, self.rect.center)]
         return []
 
     def collidePBall(self, other):
@@ -101,7 +101,7 @@ class Ball():
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         self.living = False
-                        return PlayerAI(other.color, self.rect.center) 
+                        return [PlayerAI(other.color, self.rect.center)] 
         return []
     
     def distance(self, pt):
@@ -125,6 +125,7 @@ class PBall():
         self.speedx = 0
         self.speedy = 0
         self.maxSpeed = 4
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
             
     def update(self, width, height):
         self.didBounceX = False
@@ -212,19 +213,14 @@ class PBall():
         
 class PlayerAI(Ball):
     def __init__(self, color, pos):
-        Ball(self, color, [4,4], pos)
+        Ball.__init__(self, color.lower(), [4,4], pos)
         
     def collideAIBall(self, other):
         if self != other:
+            #print "trying to hit Ball"
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        if self.color != other.color:
-                            self.living = False
-                        else:
-                            if not self.didBounceX:
-                                self.speedx = -self.speedx
-                                self.didBouncex = True
-                            if not self.didBounceY:
-                                self.speedy = -self.speedy
-                                self.didBounceY = True
+                        self.living = False
+                        return [PlayerAI(other.color, self.rect.center)]
+        return []

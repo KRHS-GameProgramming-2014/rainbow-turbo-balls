@@ -34,7 +34,7 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "RSC/Game/NEW_GAME_BUTTON.png")
-bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND2.png").convert()
+#bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND2.png").convert()
 bgRect = bgImage.get_rect()
 while True:
     while not run:
@@ -137,7 +137,7 @@ while True:
                 bully.collideBall(victem)
             for victem in aiBalls:
                 bully.collideAIBall(victem)
-                victem.collideBall(Bully)
+                victem.collideBall(bully)
 
 
         
@@ -149,7 +149,7 @@ while True:
                 balls.remove(ball)
         
         bgColor = r,g,b
-        #screen.fill(bgColor)
+        screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
         for ball in balls:
             screen.blit(ball.image, ball.rect)

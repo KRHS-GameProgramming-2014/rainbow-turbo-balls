@@ -27,7 +27,7 @@ class Ball():
             self.color = color
             self.value = 7
         elif color == "black":
-            self.image = pygame.image.load("RSC/AI Balls/BK_AI_B.png")
+            self.image = pygame.image.load("RSC/Player AI Balls/BK_AI_B.png")
             self.color = color
             self.value = 4
         elif color == "white":

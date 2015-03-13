@@ -3,6 +3,8 @@ from GameBalls import Ball
 from GameBalls import PBall
 from Score import Score
 from Button import Button
+from hud import Text
+from hud import Score
 
 pygame.init()
 
@@ -34,7 +36,7 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "RSC/Game/NEW_GAME_BUTTON.png")
-#bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND2.png").convert()
+bgImage = pygame.image.load("RSC/Game/START_SCREEN_BACKROUND.png").convert()
 bgRect = bgImage.get_rect()
 while True:
     while not run:
@@ -147,6 +149,8 @@ while True:
         for ball in aiBalls:
             if not ball.living:
                 balls.remove(ball)
+        
+         
         
         bgColor = r,g,b
         screen.fill(bgColor)

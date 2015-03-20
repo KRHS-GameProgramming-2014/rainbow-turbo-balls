@@ -50,3 +50,7 @@ class Score(Text):
         def resetScore(self):
                 self.score = 0
                 self.change = True
+
+#class Time():
+        #def _intit_: 
+            

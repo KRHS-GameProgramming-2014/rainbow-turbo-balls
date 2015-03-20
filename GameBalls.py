@@ -44,6 +44,8 @@ class Ball():
         self.didBounceY = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
+        self.invincible = True
+        self.invicibleTime = 10
 
     def place(self, pos):
         self.rect.center = pos
@@ -54,6 +56,12 @@ class Ball():
         self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
+        if self.invincible:
+            if self.invicibleTime > 0:
+                self.invicibleTime -= 1
+            else:
+                self.invicibleTime = 0
+                self.invincible = False
 
     def move(self):
         self.rect = self.rect.move(self.speed)
@@ -85,23 +93,25 @@ class Ball():
                             self.didBounceY = True
     
     def collideAIBall(self, other):
-        if self != other:
-            #print "trying to hit Ball"
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
-                        return [PlayerAI(other.color, self.rect.center)]
+        if not self.invincible:
+            if self != other:
+                #print "trying to hit Ball"
+                if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                    if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                        if (self.radius + other.radius) > self.distance(other.rect.center):
+                            self.living = False
+                            return [PlayerAI(other.color, self.speed, self.rect.center)] 
         return []
 
     def collidePBall(self, other):
-        if self != other:
-            #print "trying to hit Ball"
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
-                        return [PlayerAI(other.color, self.rect.center)] 
+        if not self.invincible:
+            if self != other:
+                #print "trying to hit Ball"
+                if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                    if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                        if (self.radius + other.radius) > self.distance(other.rect.center):
+                            self.living = False
+                            return [PlayerAI(other.color, self.speed, self.rect.center)] 
         return []
     
     def distance(self, pt):
@@ -194,10 +204,10 @@ class PBall():
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         if not self.didBounceX:
-                            self.speedx = -self.speedx
+                            self.speedx = 0
                             self.didBouncex = True
                         if not self.didBounceY:
-                            self.speedy = -self.speedy
+                            self.speedy = 0
                             self.didBounceY = True
                             #print "hit Ball"
                         #if self.change:
@@ -212,15 +222,32 @@ class PBall():
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
 class PlayerAI(Ball):
-    def __init__(self, color, pos):
-        Ball.__init__(self, color.lower(), [4,4], pos)
+    def __init__(self, color, speed, pos):
+        Ball.__init__(self, color.lower(), speed, pos)
+        self.life = 5*60
         
     def collideAIBall(self, other):
-        if self != other:
-            #print "trying to hit Ball"
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
-                        return [PlayerAI(other.color, self.rect.center)]
+        if not self.invincible:
+            if self != other:
+                #print "trying to hit Ball"
+                if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                    if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                        if (self.radius + other.radius) > self.distance(other.rect.center):
+                            if self.color != other.color:
+                                self.living = False
+                                #return [PlayerAI(other.color, self.rect.center)]
+                                return []
         return []
+    
+    def update(self, width, height):
+        self.didBounceX = False
+        self.didBounceY = False
+        self.speed = [self.speedx, self.speedy]
+        self.move()
+        self.collideWall(width, height)
+        if self.invincible:
+            if self.invicibleTime > 0:
+                self.invicibleTime -= 1
+            else:
+                self.invicibleTime = 0
+                self.invincible = False

@@ -102,7 +102,7 @@ while True:
                     PB_White.go("stop left")                   
         
         #-----Spawn-----
-        if len(balls) < 20:
+        if (len(balls) + len(aiBalls)) < 20:
             spawn_number = random.randint(0,64)
             if spawn_number < 32:
                 balls += [Ball("purple", [1,1], [random.randint (0,1100), random.randint (0,700)])]
@@ -123,33 +123,55 @@ while True:
         
         for ball in balls:
             ball.update(width, height)
+        for ball in aiBalls:
+            ball.update(width, height)
         
         #-----Collide----
         for bully in balls:
             PB_Black.collideBall(bully)
             aiBalls += bully.collidePBall(PB_Black)
+            if not bully.living:
+                balls.remove(bully)
+                break
             PB_White.collideBall(bully)
             aiBalls += bully.collidePBall(PB_White)
+            if not bully.living:
+                balls.remove(bully)
+                break
             for victem in balls:
                 bully.collideBall(victem)
                
         for bully in aiBalls:
             for victem in balls:
                 aiBalls += victem.collideAIBall(bully)
-                bully.collideBall(victem)
+                #bully.collideBall(victem)
+                if not victem.living:
+                    balls.remove(victem)
+                    break
             for victem in aiBalls:
                 bully.collideAIBall(victem)
-                victem.collideBall(bully)
-
-
-        
+                
+                victem.collideAIBall(bully)
+                if not bully.living:
+                    aiBalls.remove(bully)
+                    break
+                if not victem.living:
+                    aiBalls.remove(victem)
+                    break
+            if bully.color == "white":
+                bully.collideAIBall(PB_Black)
+            if bully.color == "black":
+                bully.collideAIBall(PB_White)
+        """
         for ball in balls:
             if not ball.living:
                 balls.remove(ball)
+                break
         for ball in aiBalls:
             if not ball.living:
                 balls.remove(ball)
-        
+                break
+        """
          
         
         bgColor = r,g,b

@@ -6,6 +6,7 @@ from Button import Button
 from hud import Text
 from hud import Score
 
+#test 1
 pygame.init()
 
 clock = pygame.time.Clock()
